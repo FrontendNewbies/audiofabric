@@ -64,7 +64,7 @@ export default function createRoamingCamera (canvas, center, eye) {
   //   isRoaming = false
   // }
 
-  window.camera = camera
+  (window as any).camera = camera
   return {
     tick,
     start,

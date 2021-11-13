@@ -19,7 +19,7 @@ import createRenderBlur from './render-blur'
 import createRenderGrid from './render-grid'
 
 const titleCard = createTitleCard()
-const canvas = document.querySelector('canvas.viz')
+const canvas = document.querySelector<HTMLCanvasElement>('canvas.viz')
 const resize = fit(canvas)
 window.addEventListener('resize', () => {
   resize()
@@ -61,7 +61,7 @@ const tracks = [
 
 const audio = createPlayer(tracks[0].path)
 audio.on('load', function () {
-  window.audio = audio
+  (window as any).audio = audio
   analyser = createAnalyser(audio.node, audio.context, { audible: true, stereo: false })
   const audioControls = createAudioControls(audio.element, tracks)
 
@@ -171,12 +171,12 @@ function setup () {
       Math.sin(rads) * mag
     ]
     const id = points.length
-    const point = createPoint(id, position)
-    point.frequencyBin = q
+    const point = createPoint(id, position);
+    (point as any).frequencyBin = q
     points.push(point)
   }
 
-  array(Math.max(0, settings.points - points.length)).forEach((_, i) => {
+  array(Math.max(0, settings.points - points.length)).forEach(() => {
     const id = points.length
     points.push(createPoint(id, [rand() * 2 - 1, rand() * 2 - 1]))
   })
@@ -310,7 +310,7 @@ const renderColoredQuad = regl({
     }
   },
   uniforms: {
-    color: regl.prop('color')
+    color: regl.prop<any, any>('color')
   },
   attributes: {
     position: [
@@ -324,8 +324,8 @@ const renderColoredQuad = regl({
 })
 
 function startLoop () {
-  return regl.frame(({ time }) => {
-    camera.tick({ time })
+  return regl.frame(() => {
+    camera.tick()
     update()
     renderToFBO(() => {
       renderFrequencies()

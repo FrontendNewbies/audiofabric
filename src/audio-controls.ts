@@ -2,13 +2,13 @@ import css from 'dom-css'
 
 export default function createAudioControls (audio, tracks) {
   tracks = tracks.map(t => Object.assign({}, t))
-  const controlsContainer = document.querySelector('.controls-container')
-  const trackSelector = document.querySelector('.track-selector')
-  const titleEl = document.querySelector('.title')
-  const artistEl = document.querySelector('.artist')
-  const timeEl = document.querySelector('.elapsed-time')
-  const seekerEl = document.querySelector('.seeker')
-  const progressEl = document.querySelector('.progress')
+  const controlsContainer = document.querySelector<HTMLDivElement>('.controls-container')
+  const trackSelector = document.querySelector<HTMLDivElement>('.track-selector')
+  const titleEl = document.querySelector<HTMLDivElement>('.title')
+  const artistEl = document.querySelector<HTMLDivElement>('.artist')
+  const timeEl = document.querySelector<HTMLDivElement>('.elapsed-time')
+  const seekerEl = document.querySelector<HTMLDivElement>('.seeker')
+  const progressEl = document.querySelector<HTMLDivElement>('.progress')
   const width = 290 // must match .controls-container width
 
   tracks.forEach((track, i) => {

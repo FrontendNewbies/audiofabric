@@ -51,7 +51,7 @@ export default function createTitleCard () {
           e.preventDefault()
           remove()
           activateDrawers()
-          resolve()
+          resolve(undefined)
           return false
         })
       })
@@ -85,7 +85,7 @@ export default function createTitleCard () {
     rand = new Alea(seed)
     console.log(`seed: ${seed}`)
     pixelPicker = getSource()
-    points = (new Array(settings.particles)).fill().map(() => {
+    points = (new Array(settings.particles)).fill(0).map(() => {
       const rads = rand() * Math.PI * 2
       const mag = Math.pow(rand(), 0.5) * settings.startSpreadMultiplier * Math.max(window.innerWidth, window.innerHeight)
       return {
