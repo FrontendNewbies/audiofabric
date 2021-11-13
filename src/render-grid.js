@@ -1,10 +1,10 @@
-const glsl = require('glslify')
-const { createSpring } = require('spring-animator')
+import glsl from 'glslify'
+import { createSpring } from 'spring-animator'
 
 let linesOffsetsLoopToken
 let lines = []
 
-module.exports = function createRenderGrid (regl, settings) {
+export default function createRenderGrid (regl, settings) {
   lines = []
 
   for (let j = 1; j < settings.gridLines; j++) {

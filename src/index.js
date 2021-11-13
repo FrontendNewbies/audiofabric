@@ -1,22 +1,22 @@
-const createRegl = require('regl')
-const glsl = require('glslify')
-const mat4 = require('gl-mat4')
-const css = require('dom-css')
-const fit = require('canvas-fit')
-const { GUI } = require('dat-gui')
-const array = require('new-array')
-const shuffle = require('shuffle-array')
-const Alea = require('alea')
-const { createSpring } = require('spring-animator')
-const Delaunator = require('delaunator')
-const createPlayer = require('web-audio-player')
-const createAnalyser = require('web-audio-analyser')
-const createCamera = require('./camera')
-const createTitleCard = require('./title-card')
-const createAudioControls = require('./audio-controls')
-const createRenderBloom = require('./render-bloom')
-const createRenderBlur = require('./render-blur')
-const createRenderGrid = require('./render-grid')
+import createRegl from 'regl'
+import glsl from 'glslify'
+import mat4 from 'gl-mat4'
+import css from 'dom-css'
+import fit from 'canvas-fit'
+import { GUI } from 'dat-gui'
+import array from 'new-array'
+import shuffle from 'shuffle-array'
+import Alea from 'alea'
+import { createSpring } from 'spring-animator'
+import Delaunator from 'delaunator'
+import createPlayer from 'web-audio-player'
+import createAnalyser from 'web-audio-analyser'
+import createCamera from './camera'
+import createTitleCard from './title-card'
+import createAudioControls from './audio-controls'
+import createRenderBloom from './render-bloom'
+import createRenderBlur from './render-blur'
+import createRenderGrid from './render-grid'
 
 const titleCard = createTitleCard()
 const canvas = document.querySelector('canvas.viz')

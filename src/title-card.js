@@ -1,7 +1,7 @@
-const fit = require('canvas-fit')
-const css = require('dom-css')
-const Alea = require('alea')
-const { createSpring } = require('spring-animator')
+import fit from 'canvas-fit'
+import css from 'dom-css'
+import Alea from 'alea'
+import { createSpring } from 'spring-animator'
 
 const settings = {
   text: 'audiofabric',
@@ -30,7 +30,7 @@ const button = container.querySelector('button')
 
 let rand, points, pixelPicker, rAFToken, start, isFading
 
-module.exports = function createTitleCard () {
+export default function createTitleCard () {
   return {
     resize: function () {
       if (isFading) return

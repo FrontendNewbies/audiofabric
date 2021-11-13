@@ -1,6 +1,6 @@
-const css = require('dom-css')
+import css from 'dom-css'
 
-module.exports = function createAudioControls (audio, tracks) {
+export default function createAudioControls (audio, tracks) {
   tracks = tracks.map(t => Object.assign({}, t))
   const controlsContainer = document.querySelector('.controls-container')
   const trackSelector = document.querySelector('.track-selector')

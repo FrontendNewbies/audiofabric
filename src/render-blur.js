@@ -1,6 +1,6 @@
-const glsl = require('glslify')
+import glsl from 'glslify'
 
-module.exports = function createRenderBlur (regl) {
+export default function createRenderBlur (regl) {
   return regl({
     vert: glsl`
       precision highp float;

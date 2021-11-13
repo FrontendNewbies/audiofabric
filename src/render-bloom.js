@@ -1,6 +1,6 @@
-const glsl = require('glslify')
+import glsl from 'glslify'
 
-module.exports = function createRenderBloom (regl, canvas) {
+export default function createRenderBloom (regl, canvas) {
   const blueTextureBuffer = new Uint8Array(canvas.width * canvas.height * 4)
   for (let i = 0; i < blueTextureBuffer.length; i += 4) {
     const x = i / 4 % canvas.width
