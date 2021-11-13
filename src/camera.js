@@ -25,7 +25,7 @@ export default function createRoamingCamera (canvas, center, eye) {
   // or 0.0014 rads per frame
   const startingSpeed = 0.0014 // rads per frame
   let currentRads = 0
-  let cameraUp = new Float32Array(3)
+  const cameraUp = new Float32Array(3)
   let currentPosition = getPositionFromRads(new Float32Array(3), currentRads)
 
   function start () {

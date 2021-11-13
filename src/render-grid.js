@@ -22,7 +22,7 @@ export default function createRenderGrid (regl, settings) {
     const granularity = 50 // settings.gridLines
     linesPositions = linesPositions || new Float32Array(lines.length * granularity * 2)
     let k = 0
-    for (let line of lines) {
+    for (const line of lines) {
       const nextOffset = line.offset.tick(1, false)
       for (let q = 0; q < granularity; q++) {
         const t = q / granularity * 2 - 1
@@ -133,7 +133,7 @@ export default function createRenderGrid (regl, settings) {
   return function ({ frequencyVals, gridMaxHeight, multiplier }) {
     getLinesPositions(linesPositions, lines)
     linesBuffer(linesPositions)
-    for (let line of lines) {
+    for (const line of lines) {
       line.offset.tick()
     }
     render({ frequencyVals, gridMaxHeight, multiplier })

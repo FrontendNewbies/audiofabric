@@ -29,7 +29,7 @@ export default function createRenderBlur (regl) {
       }
     `,
     uniforms: {
-      iResolution: ({viewportWidth, viewportHeight}) => [viewportWidth, viewportHeight],
+      iResolution: ({ viewportWidth, viewportHeight }) => [viewportWidth, viewportHeight],
       iChannel0: regl.prop('iChannel0'), // sampler2D
       direction: regl.prop('direction')
     },

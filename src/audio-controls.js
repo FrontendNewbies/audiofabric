@@ -11,7 +11,7 @@ export default function createAudioControls (audio, tracks) {
   const progressEl = document.querySelector('.progress')
   const width = 290 // must match .controls-container width
 
-  tracks.map((track, i) => {
+  tracks.forEach((track, i) => {
     const trackEl = trackSelector.appendChild(document.createElement('li'))
     trackEl.classList.add('track')
     trackEl.addEventListener('click', () => {
