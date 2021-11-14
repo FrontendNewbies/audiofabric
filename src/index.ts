@@ -1,16 +1,15 @@
 import createRegl from 'regl'
 import glsl from 'glslify'
-import mat4 from 'gl-mat4'
+import perspective from 'gl-mat4/perspective'
 import css from 'dom-css'
 import fit from 'canvas-fit'
 import { GUI } from 'dat-gui'
-import array from 'new-array'
-import shuffle from 'shuffle-array'
+import shuffle from 'lodash.shuffle'
 import Alea from 'alea'
 import { createSpring } from 'spring-animator'
 import Delaunator from 'delaunator'
 import createPlayer from 'web-audio-player'
-import createAnalyser from 'web-audio-analyser'
+import createAnalyser, { Analyser } from 'web-audio-analyser'
 import createCamera from './camera'
 import createTitleCard from './title-card'
 import createAudioControls from './audio-controls'
@@ -29,7 +28,7 @@ window.addEventListener('resize', (ev) => {
 const camera = createCamera(canvas, [2.5, 2.5, 2.5], [0, 0, 0])
 const regl = createRegl(canvas)
 
-let analyser, delaunay, points, positions, positionsBuffer, renderFrequencies,
+let analyser: Analyser, delaunay, points, positions, positionsBuffer, renderFrequencies,
   renderGrid, blurredFbo: createRegl.Framebuffer2D, renderToBlurredFBO
 
 const getFrameBuffer = (width, height) => (
@@ -60,12 +59,12 @@ const tracks = [
 ]
 
 const audio = createPlayer(tracks[0].path)
-audio.on('load', function () {
+audio.on('load', function() {
   (window as any).audio = audio
   analyser = createAnalyser(audio.node, audio.context, { audible: true, stereo: false })
   const audioControls = createAudioControls(audio.element, tracks)
 
-  function loop () {
+  function loop() {
     window.requestAnimationFrame(loop)
     audioControls.tick()
   }
@@ -151,9 +150,9 @@ gridGUI.add(settings, 'gridMaxHeight', 0.01, 0.8).step(0.01)
 // gui.add(settings, 'motionBlurAmount', 0.01, 1).step(0.01)
 
 let hasSetUp = false
-function setup () {
+function setup() {
   hasSetUp = true
-  const rand = new Alea(settings.seed)
+  const rand = Alea(settings.seed)
   points = []
 
   blurredFbo = getFrameBuffer(canvas.width, canvas.height)
@@ -176,12 +175,12 @@ function setup () {
     points.push(point)
   }
 
-  array(Math.max(0, settings.points - points.length)).forEach(() => {
+  Array(Math.max(0, settings.points - points.length)).fill(0).forEach(() => {
     const id = points.length
     points.push(createPoint(id, [rand() * 2 - 1, rand() * 2 - 1]))
   })
 
-  function createPoint (id, position) {
+  function createPoint(id, position) {
     return {
       position: position,
       id: id,
@@ -238,7 +237,7 @@ function setup () {
   })
 }
 
-function update () {
+function update() {
   const frequencies = analyser.frequencies()
   points.forEach(pt => {
     let value = 0
@@ -269,7 +268,7 @@ function update () {
 
 const renderGlobals = regl({
   uniforms: {
-    projection: ({ viewportWidth, viewportHeight }) => mat4.perspective(
+    projection: ({ viewportWidth, viewportHeight }) => perspective(
       [],
       Math.PI / 4,
       viewportWidth / viewportHeight,
@@ -323,7 +322,7 @@ const renderColoredQuad = regl({
   primitive: 'triangles'
 })
 
-function startLoop () {
+function startLoop() {
   return regl.frame(() => {
     camera.tick()
     update()

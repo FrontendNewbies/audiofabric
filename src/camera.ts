@@ -1,6 +1,6 @@
 import createCamera, { Options } from '3d-view-controls'
 
-export default function createRoamingCamera (canvas: HTMLCanvasElement, center: Options['center'], eye: Options['eye']) {
+export default function createRoamingCamera(canvas: HTMLCanvasElement, center: Options['center'], eye: Options['eye']) {
   let isRoaming = false
   // let timeout
 
@@ -14,7 +14,7 @@ export default function createRoamingCamera (canvas: HTMLCanvasElement, center: 
     [0.52, -0.11, 50]
   )
 
-  function getPositionFromRads (position, rads) {
+  function getPositionFromRads(position, rads) {
     position[0] = Math.sin(rads) * 1.5
     position[1] = Math.cos(rads) * 2.7
     position[2] = (Math.sin(rads) * 0.5 + 0.5) * 3 + 0.5
@@ -28,7 +28,7 @@ export default function createRoamingCamera (canvas: HTMLCanvasElement, center: 
   const cameraUp = new Float32Array(3)
   let currentPosition = getPositionFromRads(new Float32Array(3), currentRads)
 
-  function start () {
+  function start() {
     // temporarily disabling these until I figure out how to make the camera
     // gently start moving after an interaction - i think the gentle motion
     // of the camera is an important part of the visualization
@@ -37,7 +37,7 @@ export default function createRoamingCamera (canvas: HTMLCanvasElement, center: 
     isRoaming = true
   }
 
-  function tick () {
+  function tick() {
     camera.tick()
     // very minor performance improvement by minimizing array creation in loop
     cameraUp[0] = camera.up[0]
@@ -52,10 +52,10 @@ export default function createRoamingCamera (canvas: HTMLCanvasElement, center: 
       currentRads %= (Math.PI * 2)
     }
   }
-  function getMatrix () {
+  function getMatrix() {
     return camera.matrix
   }
-  function getCenter () {
+  function getCenter() {
     return camera.center
   }
   // function stopRoaming () {

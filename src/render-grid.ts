@@ -5,7 +5,7 @@ import type { Regl } from 'regl'
 let linesOffsetsLoopToken
 let lines = []
 
-export default function createRenderGrid (regl: Regl, settings) {
+export default function createRenderGrid(regl: Regl, settings) {
   lines = []
 
   for (let j = 1; j < settings.gridLines; j++) {
@@ -19,7 +19,7 @@ export default function createRenderGrid (regl: Regl, settings) {
     })
   }
 
-  function getLinesPositions (linesPositions, lines) {
+  function getLinesPositions(linesPositions, lines) {
     const granularity = 50 // settings.gridLines
     linesPositions = linesPositions || new Float32Array(lines.length * granularity * 2)
     let k = 0
@@ -98,7 +98,7 @@ export default function createRenderGrid (regl: Regl, settings) {
   linesOffsetsLoopToken = setTimeout(setLinesOffsetsLoop, 15000)
 
   let calls = 0
-  function setLinesOffsets () {
+  function setLinesOffsets() {
     let xVal = 1
     let yVal = 1
     calls += 1
@@ -123,7 +123,7 @@ export default function createRenderGrid (regl: Regl, settings) {
     })
   }
 
-  function setLinesOffsetsLoop () {
+  function setLinesOffsetsLoop() {
     setTimeout(() => {
       clearTimeout(linesOffsetsLoopToken)
       setLinesOffsets()
@@ -131,7 +131,7 @@ export default function createRenderGrid (regl: Regl, settings) {
     }, 9500)
   }
 
-  return function ({ frequencyVals, gridMaxHeight, multiplier }) {
+  return function({ frequencyVals, gridMaxHeight, multiplier }) {
     getLinesPositions(linesPositions, lines)
     linesBuffer(linesPositions)
     for (const line of lines) {

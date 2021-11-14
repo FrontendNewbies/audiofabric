@@ -8,7 +8,7 @@ export type RenderProps = {
   originalWeight: number
 }
 
-export default function createRenderBloom (regl: Regl, canvas: HTMLCanvasElement) {
+export default function createRenderBloom(regl: Regl, canvas: HTMLCanvasElement) {
   const blueTextureBuffer = new Uint8Array(canvas.width * canvas.height * 4)
   for (let i = 0; i < blueTextureBuffer.length; i += 4) {
     const x = i / 4 % canvas.width
@@ -145,7 +145,7 @@ export default function createRenderBloom (regl: Regl, canvas: HTMLCanvasElement
     primitive: 'triangles'
   })
 
-  return function render ({ iChannel0, blurMag, blurWeight, originalWeight }: RenderProps) {
+  return function render({ iChannel0, blurMag, blurWeight, originalWeight }: RenderProps) {
     regl({ framebuffer: tempFbo })(() => {
       renderBloomBlur({ iChannel0, blurMag })
     })

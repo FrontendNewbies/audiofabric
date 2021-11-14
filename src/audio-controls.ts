@@ -1,6 +1,6 @@
 import css from 'dom-css'
 
-export default function createAudioControls (audio, tracks) {
+export default function createAudioControls(audio, tracks) {
   tracks = tracks.map(t => Object.assign({}, t))
   const controlsContainer = document.querySelector<HTMLDivElement>('.controls-container')
   const trackSelector = document.querySelector<HTMLDivElement>('.track-selector')
@@ -22,7 +22,7 @@ export default function createAudioControls (audio, tracks) {
     track.el = trackEl
   })
 
-  function setTrack (track) {
+  function setTrack(track) {
     audio.src = track.path
     tracks.forEach(t => t.el.classList.remove('selected'))
     track.el.classList.add('selected')
@@ -33,7 +33,7 @@ export default function createAudioControls (audio, tracks) {
   setTrack(tracks[0])
 
   let lastTime
-  function tick () {
+  function tick() {
     if (audio.currentTime !== lastTime) {
       const t = audio.currentTime / audio.duration
       css(progressEl, {
@@ -61,7 +61,7 @@ export default function createAudioControls (audio, tracks) {
     tick: tick
   }
 
-  function togglePlay () {
+  function togglePlay() {
     if (audio.paused) {
       audio.play()
     } else {
@@ -70,7 +70,7 @@ export default function createAudioControls (audio, tracks) {
   }
 }
 
-function formatSeconds (seconds) {
+function formatSeconds(seconds) {
   const minutes = seconds / 60 | 0
   seconds = '' + (seconds % 60 | 0)
   if (seconds.length === 1) {

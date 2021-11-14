@@ -30,16 +30,16 @@ const button = container.querySelector<HTMLButtonElement>('button')
 
 let rand, points, pixelPicker, rAFToken, start, isFading
 
-export default function createTitleCard () {
+export default function createTitleCard() {
   return {
-    resize: function (ev) {
+    resize: function(ev) {
       if (isFading) return
       start = Date.now()
       resize(ev)
       setup()
       loop()
     },
-    show: function () {
+    show: function() {
       start = Date.now()
       setTimeout(() => {
         css(instructions, { opacity: 1 })
@@ -58,7 +58,7 @@ export default function createTitleCard () {
     }
   }
 
-  function remove () {
+  function remove() {
     isFading = true
     css(canvas, {
       transition: 'opacity 1500ms linear',
@@ -72,7 +72,7 @@ export default function createTitleCard () {
     }, 1700)
   }
 
-  function loop () {
+  function loop() {
     if (!isFading && (Date.now() - start) > 30000) return
     window.cancelAnimationFrame(rAFToken)
     rAFToken = window.requestAnimationFrame(loop)
@@ -80,9 +80,9 @@ export default function createTitleCard () {
     draw()
   }
 
-  function setup () {
+  function setup() {
     const seed = Math.random() * 1000 | 0 // 74 & 336 looks good
-    rand = new Alea(seed)
+    rand = Alea(seed)
     console.log(`seed: ${seed}`)
     pixelPicker = getSource()
     points = (new Array(settings.particles)).fill(0).map(() => {
@@ -100,7 +100,7 @@ export default function createTitleCard () {
     })
   }
 
-  function update () {
+  function update() {
     points.forEach((p) => {
       if (!p.isActive) return
       const color = pixelPicker(p.x, p.y)
@@ -137,7 +137,7 @@ export default function createTitleCard () {
     }
   }
 
-  function updateNextAngle (p, pixelPicker) {
+  function updateNextAngle(p, pixelPicker) {
     const angle = p.angle.tick(1, false)
     const currentPixelVal = getAveragePixelVal(pixelPicker(p.x, p.y))
     for (let i = 0; i <= settings.turnGranularity; i += 1) {
@@ -159,7 +159,7 @@ export default function createTitleCard () {
     }
   }
 
-  function activateDrawers () {
+  function activateDrawers() {
     settings.precision = 0.4
     points.forEach((p) => {
       p.isActive = true
@@ -169,7 +169,7 @@ export default function createTitleCard () {
     })
   }
 
-  function draw () {
+  function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     if (settings.particleSize) {
       points.forEach((p) => {
@@ -199,11 +199,11 @@ export default function createTitleCard () {
 
 // ---------
 
-function getAveragePixelVal (pixel) {
+function getAveragePixelVal(pixel) {
   return (pixel.r + pixel.g + pixel.b) / 3
 }
 
-function getSource () {
+function getSource() {
   const hiddenCanvas = container.appendChild(document.createElement('canvas'))
   const hiddenCtx = hiddenCanvas.getContext('2d')
   fit(hiddenCanvas)
@@ -216,7 +216,7 @@ function getSource () {
   return picker
 }
 
-function makePixelPicker (canvas: HTMLCanvasElement) {
+function makePixelPicker(canvas: HTMLCanvasElement) {
   const imageData = canvas.getContext('2d').getImageData(
     0, 0, canvas.width, canvas.height
   )
@@ -233,7 +233,7 @@ function makePixelPicker (canvas: HTMLCanvasElement) {
   }
 }
 
-function printText (context: CanvasRenderingContext2D, text: string, size: number) {
+function printText(context: CanvasRenderingContext2D, text: string, size: number) {
   context.font = `${size}px "Open Sans"`
   context.textAlign = 'center'
   context.textBaseline = 'middle'
