@@ -5,6 +5,9 @@ export default defineConfig({
   plugins: [
     glslifyCompiler()
   ],
+  define: {
+    global: 'window'
+  },
   build: {
     reportCompressedSize: false
   }
