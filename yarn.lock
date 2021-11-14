@@ -78,6 +78,21 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
+"@types/canvas-fit@^1.5.2":
+  version "1.5.2"
+  resolved "https://registry.npmjs.org/@types/canvas-fit/-/canvas-fit-1.5.2.tgz#44a34ae731638dac8e16d9155569b59e73c99149"
+  integrity sha512-3oAZtA675c0rvWuddEwdpBnJPUjmgqKM3WUMNQ7284jD+k8zkJF7148zVmes6hW4i7A8pJ05+b88tFDaNQFzKw==
+
+"@types/dat-gui@^0.6.3":
+  version "0.6.3"
+  resolved "https://registry.npmjs.org/@types/dat-gui/-/dat-gui-0.6.3.tgz#2285a22ee28fbed05f3932dda9144d18c9903b5d"
+  integrity sha512-N0JUd1/jrKQ00w0lz6uyx/4XhJ+qQb9Ir05DEzP4YS5N+vQUyKtcyVBG/u+NF7EkAkHHYDyzpvYf0AMS89R2OQ==
+
+"@types/delaunator@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/@types/delaunator/-/delaunator-3.0.0.tgz#217475640c604def83709f18f652bb372e3897ca"
+  integrity sha512-x8XXE/QqXUPafkqFXeJCQCq/S81IW/t49Nnhgx3yKmGwL89qFRxnXn5qtcil9GO3gVkjGy4SwgacOjCN1B6b7w==
+
 "@types/json-schema@^7.0.9":
   version "7.0.9"
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.9.tgz"
@@ -87,6 +102,11 @@
   version "0.0.29"
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
+
+"@types/shuffle-array@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/@types/shuffle-array/-/shuffle-array-1.0.2.tgz#6c136030ada522a52f513c6aa36111286b6ddaac"
+  integrity sha512-X8AFrn+D86HFJKer0n2qbG67jHMB4f/QxG28hvNHiouAn84QHVxhuCgGict5djhKP9GZPH2TjCxzf54khqawzQ==
 
 "@typescript-eslint/eslint-plugin@^5.3.1":
   version "5.3.1"

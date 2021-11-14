@@ -1,6 +1,7 @@
 import glsl from 'glslify'
+import type { Regl } from 'regl'
 
-export default function createRenderBlur (regl) {
+export default function createRenderBlur (regl: Regl) {
   return regl({
     vert: glsl`
       precision highp float;

@@ -21,16 +21,16 @@ import createRenderGrid from './render-grid'
 const titleCard = createTitleCard()
 const canvas = document.querySelector<HTMLCanvasElement>('canvas.viz')
 const resize = fit(canvas)
-window.addEventListener('resize', () => {
-  resize()
+window.addEventListener('resize', (ev) => {
+  resize(ev)
   if (hasSetUp) setup()
-  titleCard.resize()
+  titleCard.resize(ev)
 }, false)
 const camera = createCamera(canvas, [2.5, 2.5, 2.5], [0, 0, 0])
 const regl = createRegl(canvas)
 
 let analyser, delaunay, points, positions, positionsBuffer, renderFrequencies,
-  renderGrid, blurredFbo, renderToBlurredFBO
+  renderGrid, blurredFbo: createRegl.Framebuffer2D, renderToBlurredFBO
 
 const getFrameBuffer = (width, height) => (
   regl.framebuffer({
@@ -310,7 +310,7 @@ const renderColoredQuad = regl({
     }
   },
   uniforms: {
-    color: regl.prop<any, any>('color')
+    color: regl.prop('color')
   },
   attributes: {
     position: [

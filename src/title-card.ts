@@ -32,10 +32,10 @@ let rand, points, pixelPicker, rAFToken, start, isFading
 
 export default function createTitleCard () {
   return {
-    resize: function () {
+    resize: function (ev) {
       if (isFading) return
       start = Date.now()
-      resize()
+      resize(ev)
       setup()
       loop()
     },
@@ -216,7 +216,7 @@ function getSource () {
   return picker
 }
 
-function makePixelPicker (canvas) {
+function makePixelPicker (canvas: HTMLCanvasElement) {
   const imageData = canvas.getContext('2d').getImageData(
     0, 0, canvas.width, canvas.height
   )
@@ -233,7 +233,7 @@ function makePixelPicker (canvas) {
   }
 }
 
-function printText (context, text, size) {
+function printText (context: CanvasRenderingContext2D, text: string, size: number) {
   context.font = `${size}px "Open Sans"`
   context.textAlign = 'center'
   context.textBaseline = 'middle'

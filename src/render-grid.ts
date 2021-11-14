@@ -1,10 +1,11 @@
 import glsl from 'glslify'
 import { createSpring } from 'spring-animator'
+import type { Regl } from 'regl'
 
 let linesOffsetsLoopToken
 let lines = []
 
-export default function createRenderGrid (regl, settings) {
+export default function createRenderGrid (regl: Regl, settings) {
   lines = []
 
   for (let j = 1; j < settings.gridLines; j++) {
