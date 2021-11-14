@@ -5,12 +5,16 @@ a music visualization
 
 ![audiofabric-2](/images/audiofabric-2.png?raw=true "audiofabric-2")
 
-```
-npm run serve
+```cmd
+$ yarn
 ```
 
 For dev:
+```cmd
+$ yarn start
 ```
-npm install
-npm start
+
+For building:
+```cmd
+$ yarn build
 ```
