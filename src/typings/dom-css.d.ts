@@ -1,4 +1,3 @@
-
 /**
  * Basic typings for
  * https://github.com/mattdesl/dom-css

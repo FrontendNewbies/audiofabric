@@ -1,4 +1,3 @@
-
 /**
  * Basic typings for
  * https://github.com/mikolalysenko/3d-view-controls
