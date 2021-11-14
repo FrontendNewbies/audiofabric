@@ -25,8 +25,8 @@ ctx.globalCompositeOperation = 'lighter'
 const resize = fit(canvas)
 window.addEventListener('resize', resize)
 
-const instructions = container.querySelector('.instructions')
-const button = container.querySelector('button')
+const instructions = container.querySelector<HTMLDivElement>('.instructions')
+const button = container.querySelector<HTMLButtonElement>('button')
 
 let rand, points, pixelPicker, rAFToken, start, isFading
 

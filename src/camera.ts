@@ -1,8 +1,6 @@
-import createCamera from '3d-view-controls'
+import createCamera, { Options } from '3d-view-controls'
 
-type LenThree = [number, number, number]
-
-export default function createRoamingCamera (canvas: HTMLCanvasElement, center: LenThree, eye: LenThree) {
+export default function createRoamingCamera (canvas: HTMLCanvasElement, center: Options['center'], eye: Options['eye']) {
   let isRoaming = false
   // let timeout
 

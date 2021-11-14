@@ -36,7 +36,9 @@ export default function createAudioControls (audio, tracks) {
   function tick () {
     if (audio.currentTime !== lastTime) {
       const t = audio.currentTime / audio.duration
-      css(progressEl, 'width', `${t * 100}%`)
+      css(progressEl, {
+        width: `${t * 100}%`
+      })
       timeEl.innerText = formatSeconds(audio.currentTime)
     }
     lastTime = audio.currentTime
