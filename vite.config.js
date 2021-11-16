@@ -1,13 +1,10 @@
 import { defineConfig } from 'vite'
-import glslifyCompiler from './vite-plugin-glslify-compiler'
+import glslifyCompiler from 'vite-plugin-glslify'
 
 export default defineConfig({
   plugins: [
     glslifyCompiler()
   ],
-  define: {
-    global: 'window'
-  },
   build: {
     reportCompressedSize: false
   }
